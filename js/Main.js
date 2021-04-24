@@ -2,9 +2,9 @@
 
 import Router from './Router.js'
 import Search from './Search.js'
-import BuildList from './BuildList.js'
 import ListView from './ListView.js'
 import chooseFlag from './helper/chooseFlag.js'
+import shuffleSort from './helper/shuffleSort.js'
 import Recipe from './Recipe.js'
 
 class Main {
@@ -26,7 +26,7 @@ class Main {
 
     async buildListView() {
         const search = new Search()
-        const buildList = new BuildList()
+        document.querySelector('#output').innerHTML += '<div id="list"></div>'
 
 		try {
 			await this.fetchRecipes(this.recipeArray)
@@ -77,6 +77,7 @@ class Main {
             items.forEach(item => {
                 passedArray.push(item)
             })
+            shuffleSort(passedArray)
         } catch(e) {
             console.warn(e)
         }
