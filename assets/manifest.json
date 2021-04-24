@@ -1,0 +1,20 @@
+{
+  "short_name": "Kochbuch",
+  "name": "Manoúlas Kochbuch",
+  "icons": [
+    {
+      "src": "./icon/app_icon.svg",
+      "sizes": "150x150",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "./icon/app_icon.png",
+      "type": "image/png",
+      "sizes": "180x180"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#009bce",
+  "background_color": "#fff"
+}

@@ -1,0 +1,53 @@
+
+@import url('./nav.css');
+@import url('./search.css');
+@import url('./main.css');
+@import url('./recipe.css');
+@import url('./footer.css');
+
+:root {
+    --bg: #fcfcfc;
+    --font: #2c3e50;
+    --navShadow: rgba(150, 150, 150, 0.5);
+    --border: #ccc;
+    --paperBg: #fafafa;
+    --paperBorder: #ccc;
+    --paperShadow: rgba(0,0,0,0.25);
+    --inputFont: #2c3e50;
+    --inputBg: #fff;
+    
+    --unhoveredIcon: #bbb;
+    --btnGradOne: #009bce;
+    --btnGradTwo: #00bfff;
+    --blue: #009bce;
+    --deepBlue: #007aff;
+    --white: #fff;
+    --black: #000;
+    --grey: #ccc;
+}
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg: #222;
+        --font: #ccc;
+        --navShadow: #000;
+        --border: #555;
+        --paperBg: #232323;
+        --paperBorder: #444;
+        --paperShadow: #000;
+        --inputFont: #fff;
+        --inputBg: #2a2a2a;
+    }
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+*:focus {
+    outline-color: var(--blue);
+}
+body {
+    background-color: var(--bg);
+    color: var(--font);
+    font-family: "Avenir", "Arial Nova", "Arial", sans-serif;
+}

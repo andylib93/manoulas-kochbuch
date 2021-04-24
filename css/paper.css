@@ -1,0 +1,33 @@
+
+.paper {
+    background: var(--bg);
+    padding: 30px;
+    position: relative;
+}
+.paper,
+.paper::before,
+.paper::after {
+    /* Styles to distinguish sheets from one another */
+    box-shadow: 1px 1px 1px var(--paperShadow);
+    border: 1px solid var(--paperBorder);
+}
+.paper::before,
+.paper::after {
+    content: "";
+    position: absolute;
+    height: 95%;
+    width: 99%;
+    background-color: var(--paperBg);
+}
+.paper::before {
+    right: 15px;
+    top: 0;
+    transform: rotate(-1deg);
+    z-index: -1;
+}
+.paper::after {
+    top: 5px;
+    right: -5px;
+    transform: rotate(1deg);
+    z-index: -2;
+}
