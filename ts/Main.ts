@@ -9,6 +9,9 @@ import Recipe from './Recipe.js'
 
 class Main {
 
+    router: any;
+    recipeArray: Array<Object>;
+
     constructor() {
         this.router = new Router()
         this.recipeArray = []
@@ -20,7 +23,7 @@ class Main {
         }
         else {
             history.replaceState({'rid': '0'}, '', '/')
-            this.buildListView(this.router)
+            this.buildListView()
         }
     }
 
@@ -36,9 +39,7 @@ class Main {
 
         const list = new ListView({
             selector: '#list',
-            data: {
-                recipes: this.recipeArray
-            },
+            data: this.recipeArray,
             template: props => {
                 return (
                     props.recipes.map(recipe => {
@@ -56,8 +57,8 @@ class Main {
         list.render()
         
         document.querySelector('input').addEventListener('input', event => {
-            list.data.recipes = this.searchValue(this.recipeArray, event)
-            list.render()
+            list.data = this.searchValue(this.recipeArray, event);
+            list.render();
         })
 
     }
@@ -68,18 +69,29 @@ class Main {
     }
 
     async fetchRecipes(passedArray) {
-        const incomingJSON = await fetch('http://localhost:3333/api/rec/').catch(err => console.log(err))
-        let items = []
+        let items = [];
+
+        await fetch('http://localhost:3333/api/rec/')
+        .then(res => res.json())
+        .then(data => items = data)
+        .catch(err => console.log(err))
     
         try {
             // get data, add to array, shuffle array, create objects
-            items = await incomingJSON.json()
             items.forEach(item => {
                 passedArray.push(item)
             })
             shuffleSort(passedArray)
         } catch(e) {
             console.warn(e)
+        }
+    }
+
+    private async retrieveJSONOrError(response: Response) {
+        if (!response.ok) {
+          return Promise.reject(response.statusText)
+        } else {
+          return await response.json()
         }
     }
 
@@ -91,8 +103,6 @@ class Main {
                 .then(response => {
                     if (!response.ok) {
                         console.warn(`HTTP status: ${response.status}`)
-                        response.message = 'no recipe found'
-                        console.log(response.message)
                     }
                     return response
                 })

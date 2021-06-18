@@ -2,10 +2,16 @@
 
 class Recipe {
 
+    recipe: {
+        gericht: string;
+        zutaten: Array<string>;
+        zubereitung: string;
+    };
+
     constructor(obj) {
 
-        this.recipe = obj
-        let output
+        this.recipe = obj;
+        let output;
 
         if (this.recipe.gericht) {
             output = `
@@ -27,15 +33,12 @@ class Recipe {
                 </div>
             `
         }
-        else if (this.recipe === 'no recipe found'){        
+        else {
             output = `
                 <div id="error">
                     <p>Rezept nicht gefunden</p>
                 </div>
             `
-        }
-        else {
-            output = `<div id="error">Am Suchen ...</div>`
         }
 
         document.querySelector('#output').innerHTML = output

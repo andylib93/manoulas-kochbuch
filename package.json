@@ -5,6 +5,7 @@
   "main": "main.js",
   "scripts": {
     "start": "node server.js",
+    "type": "tsc --watch",
     "pack": "npx webpack --config webpack.config.js"
   },
   "keywords": [],
