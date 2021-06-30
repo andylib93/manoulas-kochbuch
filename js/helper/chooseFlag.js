@@ -1,5 +1,7 @@
 'use strict'
 
+// iban.com/country-codes
+
 const countryToFlags = {
     'DE' : '🇩🇪', 
     'GR' : '🇬🇷',
@@ -9,7 +11,13 @@ const countryToFlags = {
     'US' : '🇺🇸',
     'PT' : '🇵🇹',
     'IN' : '🇮🇳️',
-    'AT' : '🇦🇹'
+    'AT' : '🇦🇹',
+    'TR' : '🇹🇷',
+    'LB' : '🇱🇧',
+    'UK' : '🇬🇧',
+    'FR' : '🇫🇷',
+    'TH' : '🇹🇭',
+    'NL' : '🇳🇱'
 }
 
 const chooseFlag = countryCode => countryToFlags[countryCode]
