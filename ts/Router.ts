@@ -10,7 +10,7 @@ class Router {
     addingPopStateListener() {
         window.addEventListener('popstate', () => {
             if(history.state.rid === '0') 
-                console.log(document.querySelectorAll('[data-recipe]')[0].dataset.recipe)
+                console.log(document.querySelectorAll<HTMLElement>('[data-recipe]')[0].dataset.recipe)
             else
                 console.log(window.location.pathname.split('/')[1])
         })

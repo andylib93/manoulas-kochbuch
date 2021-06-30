@@ -27,7 +27,7 @@ class Footer {
     setFooterDate() {
         const date = new Date(Date.now())
         const months = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember']
-        document.querySelector('#footer-date').innerText = `${months[date.getMonth()]} ${date.getFullYear()}`        
+        document.querySelector<HTMLElement>('#footer-date').innerText = `${months[date.getMonth()]} ${date.getFullYear()}`        
     }
 
 }
