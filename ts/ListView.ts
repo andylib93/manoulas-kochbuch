@@ -1,17 +1,13 @@
 'use strict'
 
-import chooseFlag from './helper/chooseFlag.js';
+import RecipeInterface from './RecipeInterface.js'
 
-interface Recipe {
-    id: number;
-    gericht: string;
-    kueche: string;
-}
+import chooseFlag from './helper/chooseFlag.js';
 
 class ListView {
     
     elem: HTMLSelectElement;
-    data: Array<Recipe>;
+    data: Array<RecipeInterface>;
 
     constructor(options) {
         this.elem = document.querySelector(options.selector);
@@ -22,7 +18,7 @@ class ListView {
         this.elem.innerHTML = this.template(this.data);
     }
 
-    template(props: Array<Recipe>) {
+    template(props: Array<RecipeInterface>) {
         return (
             props.map(recipe => {
                 return `
