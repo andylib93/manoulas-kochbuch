@@ -1,16 +1,15 @@
 {
   "name": "manoulas-kochbuch",
-  "version": "1.0.0",
-  "description": "",
-  "main": "main.js",
+  "version": "0.0.1",
+  "description": "a simple cookbook for family and friends",
+  "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "type": "tsc --watch",
     "pack": "npx webpack --config webpack.config.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Andreas Liberpoulos",
+  "license": "GNU",
   "dependencies": {
     "express": "^4.17.1"
   },
