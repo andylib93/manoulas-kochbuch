@@ -17,7 +17,9 @@ const countryToFlags = {
     'GB' : '🇬🇧',
     'FR' : '🇫🇷',
     'TH' : '🇹🇭',
-    'NL' : '🇳🇱'
+    'NL' : '🇳🇱',
+    'MX' : '🇲🇽',
+    'CH' : '🇨🇭'
 }
 
 const chooseFlag = countryCode => countryToFlags[countryCode]
