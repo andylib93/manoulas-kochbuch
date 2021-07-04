@@ -3,7 +3,6 @@
 import Router from './Router.js'
 import Search from './Search.js'
 import ListView from './ListView.js'
-import chooseFlag from './helper/chooseFlag.js'
 import shuffleSort from './helper/shuffleSort.js'
 import Recipe from './Recipe.js'
 
@@ -13,119 +12,107 @@ class Main {
     recipeArray: Array<Object>;
 
     constructor() {
-        this.router = new Router()
-        this.recipeArray = []
+        this.router = new Router();
+        this.recipeArray = [];
 
         if (window.location.pathname !== '/'){
-            const recipeID = window.location.pathname.split('/')[1]
-            history.replaceState({'rid': `${recipeID}`}, '', `/${recipeID}`)
-            this.buildRecipeView(recipeID)
+            const recipeID = window.location.pathname.split('/')[1];
+            history.replaceState({'rid': `${recipeID}`}, '', `/${recipeID}`);
+            this.buildRecipeView(recipeID);
         }
         else {
-            history.replaceState({'rid': '0'}, '', '/')
-            this.buildListView()
+            history.replaceState({'rid': '0'}, '', '/');
+            this.buildListView();
         }
     }
 
     async buildListView() {
-        const search = new Search()
-        document.querySelector('#output').innerHTML += '<div id="list"></div>'
+        const search = new Search();
+        document.querySelector('#output').innerHTML += '<div id="list"></div>';
 
 		try {
-			await this.fetchRecipes(this.recipeArray)
+			await this.fetchRecipes(this.recipeArray);
 		} catch (e) {
-			console.warn(e)
+			console.warn(e);
 		}
 
         const list = new ListView({
             selector: '#list',
             data: this.recipeArray,
-            template: props => {
-                return (
-                    props.recipes.map(recipe => {
-                        return `
-                            <a href='/${recipe.id}' class='item' data-recipe='${recipe.id}' aria-label='${recipe.gericht}'>
-                                <p>${recipe.gericht}</p>
-                                <p>${chooseFlag(recipe.kueche)}</p>
-                            </a>
-                        `
-                    }).join('')
-                )
-            }
-        })
+        });
     
-        list.render()
+        list.render();
         
         document.querySelector('input').addEventListener('input', event => {
             list.data = this.searchValue(this.recipeArray, event);
             list.render();
-        })
+        });
 
     }
 
     async buildRecipeView(id) {
-        const obj = await this.fetchSingleRecipe(id)
-        const recipe = new Recipe(obj)
+        const obj = await this.fetchSingleRecipe(id);
+        const recipe = new Recipe(obj);
     }
 
     async fetchRecipes(passedArray) {
         let items = [];
 
-        await fetch('http://localhost:3333/api/rec/')
+        await fetch('https://manoulas-kochbuch.de/api/rec/')
         .then(res => res.json())
         .then(data => items = data)
-        .catch(err => console.log(err))
+        .catch(err => console.log(err));
     
         try {
             // get data, add to array, shuffle array, create objects
             items.forEach(item => {
-                passedArray.push(item)
-            })
-            shuffleSort(passedArray)
+                passedArray.push(item);
+            });
+            shuffleSort(passedArray);
         } catch(e) {
-            console.warn(e)
+            console.warn(e);
         }
     }
 
     private async retrieveJSONOrError(response: Response) {
         if (!response.ok) {
-          return Promise.reject(response.statusText)
+          return Promise.reject(response.statusText);
         } else {
-          return await response.json()
+          return await response.json();
         }
     }
 
     async fetchSingleRecipe(id) {
-        let item = {}
+        let item: Object = {};
 
         try {
-            item = await fetch(`http://localhost:3333/api/rec/${id}`)
+            item = await fetch(`https://manoulas-kochbuch.de/api/rec/${id}`)
                 .then(response => {
                     if (!response.ok) {
-                        console.warn(`HTTP status: ${response.status}`)
+                        console.warn(`HTTP status: ${response.status}`);
                     }
-                    return response
+                    return response;
                 })
                 .then(res => res.json())
-                .catch(err => item = undefined)
+                .catch(err => item = undefined);
         } catch(e) {
-            console.warn(e)
+            console.warn(e);
         }
 
-        if (item === undefined) item = 'no recipe found'
-        return item
+        if (item === undefined) item = 'no recipe found';
+        return item;
     }
 
     searchValue(array, event) {
-        let filtered = []
+        let filtered = [];
         array.forEach(recipe => {
             if (recipe.gericht.toLowerCase().match(event.target.value.toLowerCase())) {
-                filtered.push(recipe)
+                filtered.push(recipe);
             }
         })
-        return filtered
+        return filtered;
     }
 
 }
 
-export default Main
+export default Main;
