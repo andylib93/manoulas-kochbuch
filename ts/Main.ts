@@ -5,7 +5,7 @@ import ListView from './ListView.js';
 import Recipe from './Recipe.js';
 import { Rezept } from './interfaces.js';
 import searchValue from './helper/searchValue.js';
-import { fetchRecipes } from './helper/fetch.js';
+import { fetchRecipes, fetchRecipe } from './helper/fetch.js';
 
 class Main {
 
@@ -30,7 +30,7 @@ class Main {
         document.querySelector('#output').innerHTML += '<div id="list"></div>';
 
 		try {
-			await fetchRecipes(this.recipeArray);
+			this.recipeArray = await fetchRecipes();
 		} catch (e) {
 			console.warn(e);
 		}
@@ -50,37 +50,8 @@ class Main {
     }
 
     async buildRecipeView(id) {
-        const obj = await this.fetchSingleRecipe(id);
+        const obj = await fetchRecipe(id);
         const recipe = new Recipe(obj);
-    }
-
-    private async retrieveJSONOrError(response: Response) {
-        if (!response.ok) {
-          return Promise.reject(response.statusText);
-        } else {
-          return await response.json();
-        }
-    }
-
-    async fetchSingleRecipe(id) {
-        let item: Object = {};
-
-        try {
-            item = await fetch(`https://manoulas-kochbuch.de/api/rec/${id}`)
-                .then(response => {
-                    if (!response.ok) {
-                        console.warn(`HTTP status: ${response.status}`);
-                    }
-                    return response;
-                })
-                .then(res => res.json())
-                .catch(err => item = undefined);
-        } catch(e) {
-            console.warn(e);
-        }
-
-        if (item === undefined) item = 'no recipe found';
-        return item;
     }
 }
 
