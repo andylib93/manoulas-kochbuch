@@ -1,5 +1,3 @@
-'use strict';
-
 import { Rezept, Zutat } from './interfaces';
 
 const recipe = (recipe: Rezept): void => {

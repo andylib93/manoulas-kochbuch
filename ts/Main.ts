@@ -1,5 +1,3 @@
-'use strict';
-
 import search from './search.js';
 import ListView from './ListView.js';
 import recipe from './recipe.js';

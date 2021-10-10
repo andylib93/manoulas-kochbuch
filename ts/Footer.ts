@@ -1,5 +1,3 @@
-'use strict';
-
 const footer = (): void => {
     document.querySelector('footer').innerHTML = `
         <a id="github" href="https://github.com/andylib93/manoulas-kochbuch" target="_blank" rel="noreferrer" aria-label="link to github">

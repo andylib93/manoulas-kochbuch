@@ -1,5 +1,3 @@
-'use strict';
-
 import nav from './nav.js';
 import main from './main.js'
 import footer from './footer.js';

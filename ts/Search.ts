@@ -1,5 +1,3 @@
-'use strict';
-
 const search = (): void => {
     document.querySelector('#output').innerHTML += `
         <div id="search-field">

@@ -1,5 +1,3 @@
-'use strict'
-
 // iban.com/country-codes
 
 const countryToFlags = {
@@ -22,6 +20,6 @@ const countryToFlags = {
     'CH' : '🇨🇭'
 }
 
-const chooseFlag = countryCode => countryToFlags[countryCode]
+const chooseFlag = countryCode => countryToFlags[countryCode];
 
-export default chooseFlag
+export default chooseFlag;

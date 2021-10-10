@@ -1,5 +1,3 @@
-'use strict';
-
 interface Rezept {
     id: number;
     gericht: string;

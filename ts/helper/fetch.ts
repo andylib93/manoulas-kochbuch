@@ -1,5 +1,3 @@
-'use strict';
-
 import sortAlphabetically from './sort.js';
 import { Rezept } from '../interfaces.js';
 

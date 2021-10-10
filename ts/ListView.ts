@@ -1,5 +1,3 @@
-'use strict'
-
 import chooseFlag from './helper/chooseFlag.js';
 
 interface Recipe {

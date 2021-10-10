@@ -1,5 +1,3 @@
-'use strict';
-
 import { Rezept } from '../interfaces.js';
 
 const searchValue = (array: Array<Rezept>, event: Event): Array<Rezept> => {
