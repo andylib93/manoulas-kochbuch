@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 import nav from './nav.js';
 import Main from './Main.js'
@@ -9,14 +9,9 @@ window.addEventListener('load', () => {
     const main = new Main()
     footer();
 
-    const titleChoices = [
-        'Happy Cooking 🧑‍🍳',
-        'Don\'t overcook it 🚫️'
-    ]
-    document.addEventListener('visibilitychange', () => {
+    document.addEventListener('visibilitychange', (): void => {
         document.visibilityState === 'visible'
         ? document.title = 'Manoúlas Kochbuch'
-        : document.title = `${titleChoices[Math.floor(Math.random() * titleChoices.length)]}`
-    })
-    console.log('Version 0.1')
-})
+        : document.title = 'Happy Cooking 🧑‍🍳';
+    });
+});
