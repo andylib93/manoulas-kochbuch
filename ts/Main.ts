@@ -1,6 +1,6 @@
 'use strict';
 
-import Search from './Search.js';
+import search from './search.js';
 import ListView from './ListView.js';
 import sortAlphabetically from './helper/sort.js';
 import Recipe from './Recipe.js';
@@ -27,7 +27,7 @@ class Main {
     }
 
     async buildListView() {
-        const search = new Search();
+        search();
         document.querySelector('#output').innerHTML += '<div id="list"></div>';
 
 		try {
