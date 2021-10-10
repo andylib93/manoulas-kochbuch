@@ -4,11 +4,13 @@ import Search from './Search.js';
 import ListView from './ListView.js';
 import sortAlphabetically from './helper/sort.js';
 import Recipe from './Recipe.js';
+import { Rezept } from './interfaces.js';
+import searchValue from './helper/searchValue.js';
 
 class Main {
 
     router: any;
-    recipeArray: Array<Object>;
+    recipeArray: Array<Rezept>;
 
     constructor() {
         this.recipeArray = [];
@@ -42,7 +44,7 @@ class Main {
         list.render();
         
         document.querySelector('input').addEventListener('input', event => {
-            list.data = this.searchValue(this.recipeArray, event);
+            list.data = searchValue(this.recipeArray, event);
             list.render();
         });
 
@@ -100,17 +102,6 @@ class Main {
         if (item === undefined) item = 'no recipe found';
         return item;
     }
-
-    searchValue(array, event) {
-        let filtered = [];
-        array.forEach(recipe => {
-            if (recipe.gericht.toLowerCase().match(event.target.value.toLowerCase())) {
-                filtered.push(recipe);
-            }
-        })
-        return filtered;
-    }
-
 }
 
 export default Main;
