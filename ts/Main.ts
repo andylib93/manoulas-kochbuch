@@ -2,14 +2,13 @@
 
 import search from './search.js';
 import ListView from './ListView.js';
-import sortAlphabetically from './helper/sort.js';
 import Recipe from './Recipe.js';
 import { Rezept } from './interfaces.js';
 import searchValue from './helper/searchValue.js';
+import { fetchRecipes } from './helper/fetch.js';
 
 class Main {
 
-    router: any;
     recipeArray: Array<Rezept>;
 
     constructor() {
@@ -31,7 +30,7 @@ class Main {
         document.querySelector('#output').innerHTML += '<div id="list"></div>';
 
 		try {
-			await this.fetchRecipes(this.recipeArray);
+			await fetchRecipes(this.recipeArray);
 		} catch (e) {
 			console.warn(e);
 		}
@@ -53,25 +52,6 @@ class Main {
     async buildRecipeView(id) {
         const obj = await this.fetchSingleRecipe(id);
         const recipe = new Recipe(obj);
-    }
-
-    async fetchRecipes(passedArray) {
-        let items = [];
-
-        await fetch('https://manoulas-kochbuch.de/api/rec/')
-        .then(res => res.json())
-        .then(data => items = data)
-        .catch(err => console.log(err));
-    
-        try {
-            // get data, add to array, sort array, create objects
-            items.forEach(item => {
-                passedArray.push(item);
-            });
-            sortAlphabetically(passedArray);
-        } catch(e) {
-            console.warn(e);
-        }
     }
 
     private async retrieveJSONOrError(response: Response) {
