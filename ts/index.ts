@@ -1,12 +1,12 @@
 'use strict';
 
 import nav from './nav.js';
-import Main from './Main.js'
+import main from './main.js'
 import footer from './footer.js';
 
 window.addEventListener('load', () => {
     nav();
-    const main = new Main()
+    main();
     footer();
 
     document.addEventListener('visibilitychange', (): void => {
