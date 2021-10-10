@@ -2,7 +2,7 @@
 
 import search from './search.js';
 import ListView from './ListView.js';
-import Recipe from './Recipe.js';
+import recipe from './recipe.js';
 import { Rezept } from './interfaces.js';
 import searchValue from './helper/searchValue.js';
 import { fetchRecipes, fetchRecipe } from './helper/fetch.js';
@@ -15,7 +15,7 @@ class Main {
         this.recipeArray = [];
 
         if (window.location.pathname !== '/'){
-            const recipeID = window.location.pathname.split('/')[1];
+            const recipeID: number = parseInt(window.location.pathname.split('/')[1]);
             history.replaceState({'rid': `${recipeID}`}, '', `/${recipeID}`);
             this.buildRecipeView(recipeID);
         }
@@ -49,9 +49,9 @@ class Main {
 
     }
 
-    async buildRecipeView(id) {
-        const obj = await fetchRecipe(id);
-        const recipe = new Recipe(obj);
+    async buildRecipeView(id: number) {
+        const recipePromise: Rezept = await fetchRecipe(id);
+        recipe(recipePromise);
     }
 }
 

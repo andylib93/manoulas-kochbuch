@@ -1,65 +1,44 @@
-'use strict'
+'use strict';
 
-class Recipe {
+import { Rezept, Zutat } from './interfaces';
 
-    recipe: {
-        gericht: string;
-        zutaten: Array<string>;
-        zubereitung: string;
-    };
+const recipe = (recipe: Rezept): void => {
+    let output: string;
 
-    constructor(obj) {
-
-        this.recipe = obj;
-        let output;
-
-        if (this.recipe.gericht) {
-            output = `
-                <div id='recipe' class='paper'>
-                    <div class='title'>
-                        <h1>${this.recipe.gericht}</h1>
-                    </div>
-                    <div class='ingredients'>
-                        <ul class='amount'>
-                            ${this.mapZutatenMenge(this.recipe.zutaten)}
-                        </ul>
-                        <ul class='ingredient'>
-                            ${this.mapZutatenZutat(this.recipe.zutaten)}
-                        </ul>
-                    </div>
-                    <div class='preparation'>
-                        <p>${this.recipe.zubereitung}</p>
-                    </div>
+    if (recipe.gericht) {
+        output = `
+            <div id='recipe' class='paper'>
+                <div class='title'>
+                    <h1>${recipe.gericht}</h1>
                 </div>
-            `
-        }
-        else {
-            output = `
-                <div id="error">
-                    <p>Rezept nicht gefunden</p>
+                <div class='ingredients'>
+                    <ul class='amount'>
+                        ${ingredientMapping(recipe.zutaten, 'menge')}
+                    </ul>
+                    <ul class='ingredient'>
+                        ${ingredientMapping(recipe.zutaten, 'zutat')}
+                    </ul>
                 </div>
-            `
-        }
-
-        document.querySelector('#output').innerHTML = output
+                <div class='preparation'>
+                    <p>${recipe.zubereitung}</p>
+                </div>
+            </div>
+        `;
     }
-
-    mapZutatenMenge(array) {
-        let nodeList = ''
-        array.forEach(element => {
-            nodeList += `<li>${element.menge}</li>`
-        })
-        return nodeList
+    else {
+        output = `
+            <div id="error">
+                <p>Rezept nicht gefunden</p>
+            </div>
+        `;
     }
-
-    mapZutatenZutat(array) {
-        let nodeList = ''
-        array.forEach(element => {
-            nodeList += `<li>${element.zutat}</li>`
-        })
-        return nodeList
-    }
-    
+    document.querySelector('#output').innerHTML = output;
 }
 
-export default Recipe
+const ingredientMapping = (array: Zutat[], attr: string) => {
+    let nodeList: string;
+    array.forEach(zutat => nodeList += `<li>${zutat[attr]}</li>`);
+    return nodeList;
+}
+
+export default recipe;
