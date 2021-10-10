@@ -1,10 +1,9 @@
-'use strict'
+'use strict';
 
-import Router from './Router.js'
-import Search from './Search.js'
-import ListView from './ListView.js'
-import shuffleSort from './helper/shuffleSort.js'
-import Recipe from './Recipe.js'
+import Search from './Search.js';
+import ListView from './ListView.js';
+import sortAlphabetically from './helper/sort.js';
+import Recipe from './Recipe.js';
 
 class Main {
 
@@ -12,7 +11,6 @@ class Main {
     recipeArray: Array<Object>;
 
     constructor() {
-        this.router = new Router();
         this.recipeArray = [];
 
         if (window.location.pathname !== '/'){
@@ -64,11 +62,11 @@ class Main {
         .catch(err => console.log(err));
     
         try {
-            // get data, add to array, shuffle array, create objects
+            // get data, add to array, sort array, create objects
             items.forEach(item => {
                 passedArray.push(item);
             });
-            shuffleSort(passedArray);
+            sortAlphabetically(passedArray);
         } catch(e) {
             console.warn(e);
         }
