@@ -1,13 +1,13 @@
 'use strict'
 
-import nav from './nav.js'
+import nav from './nav.js';
 import Main from './Main.js'
-import Footer from './Footer.js'
+import footer from './footer.js';
 
 window.addEventListener('load', () => {
     nav();
     const main = new Main()
-    const footer = new Footer()
+    footer();
 
     const titleChoices = [
         'Happy Cooking 🧑‍🍳',
