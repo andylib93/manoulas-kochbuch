@@ -1,18 +1,9 @@
-'use strict'
+'use strict';
 
-class Nav {
-    
-    constructor() {
-        this.build()
-    }
+const nav = () => {
+    document.querySelector('nav').innerHTML = `
+        <a href='/' id='logo' aria-label='Zur Startseite'></a>
+    `;
+}    
 
-    build() {
-        document.querySelector('nav').innerHTML = `
-            <a href='/' id='logo' aria-label='Zur Startseite'></a>
-        `
-        // data-recipe='0'
-    }
-
-}
-
-export default Nav
+export default nav;

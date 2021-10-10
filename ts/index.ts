@@ -1,11 +1,11 @@
 'use strict'
 
-import Nav from './Nav.js'
+import nav from './nav.js'
 import Main from './Main.js'
 import Footer from './Footer.js'
 
 window.addEventListener('load', () => {
-    const nav = new Nav()
+    nav();
     const main = new Main()
     const footer = new Footer()
 
