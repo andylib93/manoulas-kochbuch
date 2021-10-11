@@ -1,5 +1,5 @@
 import search from './search.js';
-import item from './item.js';
+import buildItems from './buildItems.js';
 import recipe from './recipe.js';
 import { Rezept } from './interfaces.js';
 import searchValue from './helper/searchValue.js';
@@ -22,13 +22,11 @@ const main = async () => {
     } catch (e) {
         console.warn(e);
     }
-
-    const recipeList: string = item(recipeArray);
-    document.querySelector('#list').innerHTML = recipeList;
+    buildItems(recipeArray);
     
     document.querySelector('input').addEventListener('input', event => {
-        const filtered = searchValue(recipeArray, event);
-        document.querySelector('#list').innerHTML = item(filtered);
+        const filtered: Rezept[] = searchValue(recipeArray, event);
+        buildItems(filtered);
     });
 }
 
