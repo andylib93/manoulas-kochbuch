@@ -1,9 +1,9 @@
-import search from './search.js';
 import buildItems from './buildItems.js';
+import { fetchRecipes, fetchRecipe } from './helper/fetch.js';
 import recipe from './recipe.js';
 import { Rezept } from './interfaces.js';
+import search from './search.js';
 import searchValue from './helper/searchValue.js';
-import { fetchRecipes, fetchRecipe } from './helper/fetch.js';
 
 const main = async () => {
     if (window.location.pathname !== '/'){

@@ -4,8 +4,8 @@ import footer from './footer.js';
 
 window.addEventListener('load', () => {
     nav();
-    main();
     footer();
+    main();
 
     document.addEventListener('visibilitychange', (): void => {
         document.visibilityState === 'visible'
