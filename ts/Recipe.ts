@@ -33,10 +33,10 @@ const recipe = (recipe: Rezept): void => {
     document.querySelector('#output').innerHTML = output;
 }
 
-const ingredientMapping = (array: Zutat[], attr: string) => {
-    let nodeList: string;
-    array.forEach(zutat => nodeList += `<li>${zutat[attr]}</li>`);
-    return nodeList;
+const ingredientMapping = (array: Zutat[], attr: string): string => {
+    let list: string = '';
+    array.forEach(zutat => list += `<li>${zutat[attr]}</li>`);
+    return list;
 }
 
 export default recipe;

@@ -8,16 +8,11 @@ import { fetchRecipes, fetchRecipe } from './helper/fetch.js';
 const main = async () => {
     if (window.location.pathname !== '/'){
         const recipeID: number = parseInt(window.location.pathname.split('/')[1]);
-        history.replaceState({'rid': `${recipeID}`}, '', `/${recipeID}`);
-        buildRecipeView(recipeID);
+        const recipePromise: Rezept = await fetchRecipe(recipeID);
+        recipe(recipePromise);
+        return;
     }
-    else {
-        history.replaceState({'rid': '0'}, '', '/');
-        buildListView();
-    }
-}
 
-const buildListView = async () => {
     let recipeArray: Array<Rezept>;
     search();
     document.querySelector('#output').innerHTML += '<div id="list"></div>';
@@ -39,11 +34,6 @@ const buildListView = async () => {
         list.data = searchValue(recipeArray, event);
         list.render();
     });
-}
-
-const buildRecipeView = async (id: number) => {
-    const recipePromise: Rezept = await fetchRecipe(id);
-    recipe(recipePromise);
 }
 
 export default main;
