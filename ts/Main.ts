@@ -1,5 +1,5 @@
 import search from './search.js';
-import ListView from './ListView.js';
+import item from './item.js';
 import recipe from './recipe.js';
 import { Rezept } from './interfaces.js';
 import searchValue from './helper/searchValue.js';
@@ -13,7 +13,7 @@ const main = async () => {
         return;
     }
 
-    let recipeArray: Array<Rezept>;
+    let recipeArray: Rezept[];
     search();
     document.querySelector('#output').innerHTML += '<div id="list"></div>';
 
@@ -23,16 +23,12 @@ const main = async () => {
         console.warn(e);
     }
 
-    const list = new ListView({
-        selector: '#list',
-        data: recipeArray,
-    });
-
-    list.render();
+    const recipeList: string = item(recipeArray);
+    document.querySelector('#list').innerHTML = recipeList;
     
     document.querySelector('input').addEventListener('input', event => {
-        list.data = searchValue(recipeArray, event);
-        list.render();
+        const filtered = searchValue(recipeArray, event);
+        document.querySelector('#list').innerHTML = item(filtered);
     });
 }
 
