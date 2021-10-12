@@ -39,6 +39,7 @@ main {
     width: 15rem;
     display: flex;
     justify-content: space-between;
+    padding: 50px 0;
 }
 #pagination button {
     background: none;
@@ -52,6 +53,7 @@ main {
     color: var(--deepBlue);
 }
 #pagination button:disabled {
+    cursor: unset;
     color: var(--grey);
 }
 #count {
