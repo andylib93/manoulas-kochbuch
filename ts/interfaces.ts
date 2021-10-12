@@ -3,7 +3,7 @@ interface Rezept {
     gericht: string;
     kueche: string;
     gang: string;
-    zutaten: Array<Zutat>;
+    zutaten: Zutat[];
     zubereitung: string;
 }
 
@@ -14,4 +14,10 @@ interface Zutat {
     foreign_key: number;
 }
 
-export { Rezept, Zutat }
+interface PaginatedRecipe {
+    data: Rezept[];
+    start: number;
+    end: number;
+}
+
+export { Rezept, Zutat, PaginatedRecipe }
