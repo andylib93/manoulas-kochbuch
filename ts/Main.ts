@@ -1,11 +1,11 @@
 import buildItems from './buildItems.js';
-import error from './helper/error.js';
-import { fetchRecipes, fetchRecipe } from './helper/fetch.js';
+import error from './util/error.js';
+import { fetchRecipes, fetchRecipe } from './util/fetch.js';
 import { buildPagination, paginateArray} from './pagination.js';
 import recipe from './recipe.js';
 import { Rezept } from './interfaces.js';
 import search from './search.js';
-import searchValue from './helper/searchValue.js';
+import searchValue from './util/searchValue.js';
 
 const main = async () => {
     if (window.location.pathname !== '/'){
