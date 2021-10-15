@@ -1,7 +1,6 @@
 import buildItems from './buildItems.js';
 import error from './util/error.js';
 import { fetchRecipes, fetchRecipe } from './util/fetch.js';
-import { buildPagination, paginateArray} from './pagination.js';
 import recipe from './recipe.js';
 import { Rezept } from './interfaces.js';
 import search from './search.js';
@@ -27,14 +26,12 @@ const main = async () => {
 
     try {
         recipeArray = await fetchRecipes();
-        const { data, start, end } = paginateArray(recipeArray);
-        buildPagination(start, end);
-        buildItems(data);
+        buildItems(recipeArray);
     } catch (e) {
         error();
         console.warn(e);
     }
-    
+
     document.querySelector('input').addEventListener('input', event => {
         const filtered: Rezept[] = searchValue(recipeArray, event);
         buildItems(filtered);
