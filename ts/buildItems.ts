@@ -1,4 +1,4 @@
-import chooseFlag from './helper/chooseFlag.js';
+import chooseFlag from './util/chooseFlag.js';
 import { Rezept } from './interfaces.js';
 
 const buildItems = (recipe: Rezept[]): void => {
