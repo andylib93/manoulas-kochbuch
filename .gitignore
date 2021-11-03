@@ -3,3 +3,4 @@ package-lock.json
 js
 other
 .DS_Store
+dist
