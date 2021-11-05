@@ -1,9 +1,56 @@
 
 #addrecipe {
-    height: 20rem;
+    height: auto;
     width: 80%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+}
+#addrecipe h1 {
+    margin: 3rem 0 2rem;
+}
+#top {
+    width: 100%;
+    max-width: 40rem;
+    display: flex;
+    margin: 2rem 0;
+    justify-content: space-between;
+    align-items: center;
+}
+#addingredient {
+    margin-top: 0;
+}
+#ingredientsfield {
+    width: 80%;
+    max-width: 40rem;
+}
+textarea {
+    font-size: 0.9rem;
+    font-family: sans-serif;
+    padding: 1rem;
+    border: 2px solid var(--blue);
+    border-radius: 0.5rem;
+    color: var(--font);
+    background-color: var(--bg);
+    resize: none;
+}
+.ingredientwrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+#prepfield {
+    height: auto;
+    width: 100%;
+    max-width: 40rem;
+    margin: 1rem 0;
+    display: flex;
+    flex-direction: column;
+}
+#prepfield h3 {
+    margin: 1rem 0;
+}
+#save {
+    margin-top: 2rem;
 }

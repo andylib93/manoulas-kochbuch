@@ -1,5 +1,5 @@
 interface Rezept {
-    id: number;
+    id?: number;
     gericht: string;
     kueche: string;
     gang: string;
@@ -8,10 +8,10 @@ interface Rezept {
 }
 
 interface Zutat {
-    id: number;
+    id?: number;
     menge: string;
     zutat: string;
-    foreign_key: number;
+    foreign_key?: number;
 }
 
 interface PaginatedRecipe {
