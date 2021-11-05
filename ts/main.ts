@@ -6,12 +6,23 @@ import recipe from './recipe.js';
 import { Rezept } from './interfaces.js';
 import search from './search.js';
 import searchValue from './util/searchValue.js';
+import addRecipe from './addrecipe.js';
 
 const main = async () => {
 
     if (window.location.pathname === '/login'){
         try {
             login();           
+        }
+        catch (e) {
+            error();
+            console.warn(e);
+        }
+        return;
+    }
+    else if (window.location.pathname === '/add'){
+        try {
+            addRecipe();
         }
         catch (e) {
             error();
