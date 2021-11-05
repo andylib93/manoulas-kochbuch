@@ -1,0 +1,44 @@
+
+#loginfield {
+    height: 20rem;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#loginfield button {
+    margin-top: 2rem;
+    padding: 0.6rem 2rem;
+    color: var(--white);
+    background-color: var(--blue);
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 1rem;
+}
+.inputfield {
+    width: 13rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin: 1rem 0;
+}
+.inputfield input {
+    border: 2px solid var(--blue);
+    border-radius: 0.25rem;
+    width: 13rem;
+    height: 3rem;
+    padding: 10px;
+    background-color: var(--bg);
+    font-size: 0.9rem;
+}
+.inputfield span {
+    font-size: 0.8rem;
+    position: absolute;
+    bottom: 2.5rem;
+    left: 0.5rem;
+    color: var(--ft);
+    background-color: var(--bg);
+    padding: 0 0.2rem
+}

@@ -1,12 +1,25 @@
 import buildItems from './buildItems.js';
 import error from './util/error.js';
 import { fetchRecipes, fetchRecipe } from './util/fetch.js';
+import login from './login.js';
 import recipe from './recipe.js';
 import { Rezept } from './interfaces.js';
 import search from './search.js';
 import searchValue from './util/searchValue.js';
 
 const main = async () => {
+
+    if (window.location.pathname === '/login'){
+        try {
+            login();           
+        }
+        catch (e) {
+            error();
+            console.warn(e);
+        }
+        return;
+    }
+
     if (window.location.pathname !== '/'){
         const recipeID: number = parseInt(window.location.pathname.split('/')[1]);
         try {
