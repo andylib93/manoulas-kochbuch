@@ -4,12 +4,12 @@ const login = (): void => {
     output = `
         <div id="loginfield">
             <div class="inputfield">
-                <span>Name:</span>
-                <input type="text" placeholder="user">
+                <label for="name">Name:</label>
+                <input type="text" name="name" placeholder="user">
             </div>
             <div class="inputfield">
-                <span>Passwort:</span>
-                <input type="password" placeholder="123456">
+                <label for="password">Passwort:</label>
+                <input type="password" name="password" placeholder="123456">
             </div>
             <button id="loginBTN">Login</button>
         </div>
