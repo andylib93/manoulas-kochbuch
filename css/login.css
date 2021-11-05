@@ -30,6 +30,7 @@
     width: 13rem;
     height: 3rem;
     padding: 10px;
+    color: var(--font);
     background-color: var(--bg);
     font-size: 0.9rem;
 }
