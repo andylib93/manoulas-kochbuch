@@ -19,8 +19,8 @@ const login = (): void => {
 }
 
 const post = (): void => {
-    const name = (<HTMLInputElement>document.querySelector('input[type="text"]')).value;
-    const password = (<HTMLInputElement>document.querySelector('input[type="password"]')).value;
+    const name: string = document.querySelector<HTMLInputElement>('input[type="text"]').value;
+    const password: string = document.querySelector<HTMLInputElement>('input[type="password"]').value;
 
     try {
         fetch('http://localhost:3000/login', {
