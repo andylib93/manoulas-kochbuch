@@ -1,4 +1,4 @@
-import { Zutat } from "./interfaces";
+import { Rezept, Zutat } from "./interfaces";
 
 const addRecipe = (): void => {
     let output: string;
@@ -9,6 +9,38 @@ const addRecipe = (): void => {
             <div class="inputfield">
                 <label for="gericht">Gericht:</label>
                 <input invalid type="text" name="gericht" placeholder="Gerichtname" />
+            </div>
+            <div class="wrapper">
+                <div class="inputfield">
+                    <label>Gang:</label>
+                    <select>
+                        <option value="vorspeise">Vorspeise</option>
+                        <option value="hauptspeise">Hauptspeise</option>
+                        <option value="nachspeise">Nachspeise</option>
+                    </select>
+                </div>
+                <div class="inputfield">
+                    <label>Küche:</label>
+                    <select>
+                        <option value="DE">Deutsch</option>
+                        <option value="GR">Griechisch</option>
+                        <option value="CN">Chinesisch</option>
+                        <option value="ES">Spanisch</option>
+                        <option value="IT">Italienisch</option>
+                        <option value="US">Amerikanisch</option>
+                        <option value="PT">Portugiesisch</option>
+                        <option value="IN">Indisch</option>
+                        <option value="AT">Österreichisch</option>
+                        <option value="TK">Türkisch</option>
+                        <option value="LB">Libanesisch</option>
+                        <option value="GB">Britisch</option>
+                        <option value="FR">Französisch</option>
+                        <option value="TH">Thailändisch</option>
+                        <option value="NL">Niederländisch</option>
+                        <option value="MX">Mexikanisch</option>
+                        <option value="CH">Schweizer</option>
+                    </select>
+                </div>
             </div>
             <div id="top">
                 <h3>Zutaten:</h3>
@@ -52,22 +84,25 @@ function onInput(): void {
 }
 
 const addIngredient = (): void => {
-    document.querySelector('#ingredientsfield').innerHTML += `
-        <div class="ingredientwrapper">
-            <div class="inputfield">
-                <label for="menge">Menge:</label>
-                <input type="text" name="menge" placeholder="10 g" />
-            </div>
-            <div class="inputfield">
-                <label for="zutat">Zutat:</label>
-                <input type="text" name="zutat" placeholder="Mehl" />
-            </div>
+    const div: HTMLDivElement = document.createElement('div');
+    div.classList.add('ingredientwrapper');
+    div.innerHTML = `
+        <div class="inputfield">
+            <label for="menge">Menge:</label>
+            <input type="text" name="menge" placeholder="10 g" />
+        </div>
+        <div class="inputfield">
+            <label for="zutat">Zutat:</label>
+            <input type="text" name="zutat" placeholder="Mehl" />
         </div>
     `;
+    document.querySelector('#ingredientsfield').appendChild(div);
 }
 
 const postRecipe = (): void => {
     const gericht: string = document.querySelector<HTMLInputElement>('input[name="gericht"]').value;
+    const gang: string = document.querySelectorAll<HTMLInputElement>('select')[0].value;
+    const kueche: string = document.querySelectorAll<HTMLInputElement>('select')[1].value;
     const zubereitung: string = document.querySelector<HTMLTextAreaElement>('textarea').value;
     const mengen: NodeListOf<HTMLInputElement> = document.querySelectorAll('input[name="menge"]');
     const zutaten: NodeListOf<HTMLInputElement> = document.querySelectorAll('input[name="zutat"]');
@@ -79,7 +114,7 @@ const postRecipe = (): void => {
     mengen.forEach(menge => finalMengen.push(menge.value));
     zutaten.forEach(zutat => finalZutaten.push(zutat.value));
 
-    for(let i = 0; i <= finalMengen.length; i++) {
+    for(let i = 0; i < finalMengen.length; i++) {
         const zutat: Zutat = {
             menge: finalMengen[i],
             zutat: finalZutaten[i]
@@ -87,7 +122,14 @@ const postRecipe = (): void => {
         allZutaten.push(zutat);
     } 
 
-    console.log(gericht, allZutaten, zubereitung);
+    const newRecipe: Rezept = {
+        gericht,
+        kueche,
+        gang,
+        zutaten: allZutaten,
+        zubereitung
+    }
+    console.log(newRecipe);
     /*
     try {
         fetch('http://localhost:3000/rec', {
