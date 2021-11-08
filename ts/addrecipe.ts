@@ -12,16 +12,16 @@ const addRecipe = (): void => {
             </div>
             <div class="wrapper">
                 <div class="inputfield">
-                    <label>Gang:</label>
-                    <select>
+                    <label for="gang">Gang:</label>
+                    <select name="gang">
                         <option value="vorspeise">Vorspeise</option>
                         <option value="hauptspeise">Hauptspeise</option>
                         <option value="nachspeise">Nachspeise</option>
                     </select>
                 </div>
                 <div class="inputfield">
-                    <label>Küche:</label>
-                    <select>
+                    <label for="kueche">Küche:</label>
+                    <select name="kueche">
                         <option value="DE">Deutsch</option>
                         <option value="GR">Griechisch</option>
                         <option value="CN">Chinesisch</option>
@@ -56,6 +56,7 @@ const addRecipe = (): void => {
                         <label for="zutat">Zutat:</label>
                         <input type="text" name="zutat" placeholder="Mehl" />
                     </div>
+                    <!--- <button class="delete">&#x2715</button> --->
                 </div>
             </div>
             <div id="prepfield">
@@ -79,7 +80,7 @@ const addRecipe = (): void => {
 // stackoverflow.com/questions/454202/creating-a-textarea-with-auto-resize
 function onInput(): void {
     this.style.height = 'auto';
-    (<HTMLDivElement>document.querySelector('#addrecipe')).style.height = 'auto';
+    document.querySelector<HTMLDivElement>('#addrecipe').style.height = 'auto';
     this.style.height = `${this.scrollHeight}px`;
 }
 
@@ -101,8 +102,8 @@ const addIngredient = (): void => {
 
 const postRecipe = (): void => {
     const gericht: string = document.querySelector<HTMLInputElement>('input[name="gericht"]').value;
-    const gang: string = document.querySelectorAll<HTMLInputElement>('select')[0].value;
-    const kueche: string = document.querySelectorAll<HTMLInputElement>('select')[1].value;
+    const gang: string = document.querySelector<HTMLInputElement>('select[name="gang"]').value;
+    const kueche: string = document.querySelector<HTMLInputElement>('select[name="kueche"]').value;
     const zubereitung: string = document.querySelector<HTMLTextAreaElement>('textarea').value;
     const mengen: NodeListOf<HTMLInputElement> = document.querySelectorAll('input[name="menge"]');
     const zutaten: NodeListOf<HTMLInputElement> = document.querySelectorAll('input[name="zutat"]');
@@ -115,6 +116,7 @@ const postRecipe = (): void => {
     zutaten.forEach(zutat => finalZutaten.push(zutat.value));
 
     for(let i = 0; i < finalMengen.length; i++) {
+        if(finalMengen[i] === '' || finalZutaten[i] === '') continue;
         const zutat: Zutat = {
             menge: finalMengen[i],
             zutat: finalZutaten[i]
