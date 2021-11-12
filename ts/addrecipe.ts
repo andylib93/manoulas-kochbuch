@@ -1,4 +1,4 @@
-import postRecipe from './util/postRecipe';
+import postRecipe from './util/postRecipe.js';
 
 const addRecipe = (): void => {
     let output: string;

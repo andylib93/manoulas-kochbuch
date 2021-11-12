@@ -1,5 +1,5 @@
 import { Rezept, Zutat } from './interfaces';
-import postRecipe from './util/postRecipe';
+import postRecipe from './util/postRecipe.js';
 
 const editRecipe = (recipe: Rezept): void => {
     let output: string;
