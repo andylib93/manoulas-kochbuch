@@ -2,6 +2,7 @@ const login = (): void => {
     let output: string;
     
     output = `
+        <h1 style="margin-top: 3rem;">Login</h1>
         <div id="loginfield">
             <div class="inputfield">
                 <label for="name">Name:</label>
@@ -26,10 +27,10 @@ const post = (): void => {
         fetch('http://localhost:3000/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ "name": name, "password": password })
+            body: JSON.stringify({ name, password })
         });
     } catch (error) {
-        console.warn(error);
+        console.log(error);
     }
 }
 

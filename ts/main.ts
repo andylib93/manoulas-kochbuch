@@ -6,7 +6,8 @@ import recipe from './recipe.js';
 import { Rezept } from './interfaces.js';
 import search from './search.js';
 import searchValue from './util/searchValue.js';
-import addRecipe from './addrecipe.js';
+import addRecipe from './addRecipe.js';
+import editRecipe from './editRecipe.js';
 
 const main = async () => {
 
@@ -23,6 +24,17 @@ const main = async () => {
     else if (window.location.pathname === '/add'){
         try {
             addRecipe();
+        }
+        catch (e) {
+            error();
+            console.warn(e);
+        }
+        return;
+    }
+    else if (window.location.pathname === '/edit'){
+        try {
+            const recipe2edit: Rezept = await fetchRecipe(2);
+            editRecipe(recipe2edit);
         }
         catch (e) {
             error();
