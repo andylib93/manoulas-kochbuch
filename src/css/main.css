@@ -1,0 +1,62 @@
+@import url("./nav.css");
+@import url("./search.css");
+@import url("./footer.css");
+
+main {
+    padding-top: 80px;
+}
+#output {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#list {
+    width: 50%;
+    min-height: 580px;
+    display: flex;
+    flex-direction: column;
+}
+#list > a {
+    color: var(--font);
+    text-decoration: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.item {
+    width: 100%;
+    height: 48px;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 40px;
+    margin: 5px 0;
+    border: 0.5px solid var(--border);
+    cursor: pointer;
+    transition: all .15s ease-in-out;
+}
+.item:hover {
+    transform: scale(1.05);
+}
+button {
+    padding: 0.6rem 2rem;
+    color: var(--white);
+    background-color: var(--blue);
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 1rem;
+}
+button:focus,
+button:active,
+button:hover {
+    /* stackoverflow.com/questions/17202128/rounded-cornes-border-radius-safari-issue */
+    outline-offset: 2px;
+    outline: 2px solid var(--blue);
+}
+
+@media (max-width: 600px) {
+    #list {
+        width: 90%;
+    }
+}

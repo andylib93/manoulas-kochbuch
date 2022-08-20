@@ -1,0 +1,83 @@
+
+@import url('./paper.css');
+
+#recipe {
+    width: 70%;
+    height: auto;
+    margin: 50px auto 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+#recipe > div {
+    padding: 20px 0;
+}
+.title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-row: 1;
+}
+.title > h1 {
+    text-align: center;
+    hyphens: auto;
+    font-size: 1.5rem;
+}
+.ingredients {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 22rem;
+}
+.ingredients ul {
+    list-style: none;
+}
+.ingredients ul:first-child {
+    padding-right: 10px;
+}
+.ingredients ul:last-child {
+    padding-left: 10px;
+}
+.amount {
+    display: flex;
+    flex-direction: column;
+}
+.amount > li {
+    text-align: right;
+    min-width: 100px;
+}
+.ingredient {
+    display: flex;
+    flex-direction: column;
+}
+.ingredient li {
+    min-width: 150px;
+}
+.preparation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.preparation > p {
+    text-align: center;
+    padding: 0 20%;
+}
+#message {
+    margin: 50px;
+    text-align: center;
+} 
+@media (max-width: 450px) {
+    .preparation > p {
+        padding: 0 5%;
+    }
+    #recipe {
+        width: 90%;
+    }
+}
+@media (max-width: 400px) {
+    #list {
+        width: 90%;
+    }
+}

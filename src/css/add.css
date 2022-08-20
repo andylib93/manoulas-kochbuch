@@ -1,0 +1,82 @@
+
+#addrecipe {
+    height: auto;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#addrecipe h1 {
+    margin: 3rem 0 2rem;
+}
+select {
+    background: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iOSIgdmlld0JveD0iMCAwIDE0IDkiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik0xIDFMNyA3TDEzIDEiIHN0cm9rZT0iI2FhYSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPC9zdmc+Cg==) no-repeat 95% 50%;
+	-moz-appearance: none; 
+	-webkit-appearance: none; 
+	appearance: none;
+    border: 1px solid var(--border);
+    border-radius: 0.25rem;
+    width: 13rem;
+    height: 3rem;
+    padding: 10px;
+    color: var(--font);
+    background-color: var(--bg);
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+select:focus {
+    border: 2px solid var(--blue);
+}
+.wrapper {
+    width: 80%;
+    max-width: 40rem;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+#top {
+    width: 100%;
+    max-width: 40rem;
+    display: flex;
+    margin: 2rem 0;
+    justify-content: space-between;
+    align-items: center;
+}
+#addingredient {
+    margin-top: 0;
+}
+#ingredientsfield {
+    width: 80%;
+    max-width: 40rem;
+}
+textarea {
+    font-size: 16px;
+    font-family: sans-serif;
+    padding: 1rem;
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+    color: var(--font);
+    background-color: var(--bg);
+    resize: none;
+}
+.ingredientwrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+#prepfield {
+    height: auto;
+    width: 100%;
+    max-width: 40rem;
+    margin: 1rem 0;
+    display: flex;
+    flex-direction: column;
+}
+#prepfield h3 {
+    margin: 1rem 0;
+}
+#save {
+    margin-top: 2rem;
+}

@@ -1,0 +1,25 @@
+
+nav {
+    height: 80px;
+    width: 100%;
+    box-shadow: 0px 20px 30px -20px var(--navShadow);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--bg);
+    position: fixed;
+    z-index: 10;
+}
+nav a {
+    color: var(--ft);
+}
+#logo {
+    height: 50px;
+    width: 170px;
+    margin-left: 1.5rem;
+    background-image: url("../assets/svg/logo.svg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    outline: none;
+}
